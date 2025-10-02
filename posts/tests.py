@@ -21,3 +21,8 @@ class PostViewTest(TestCase):
         response = self.client.get('/posts/')
         self.assertContains(response, "Тест 1")
         self.assertContains(response, "Тест 2")
+
+    def test_post_is_in_list(self):
+        """Проверка, что пост существует"""
+        response = self.client.get('/posts/')
+        self.assertTrue(Post.objects.filter(pk=True).exists())
