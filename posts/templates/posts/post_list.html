@@ -1,0 +1,15 @@
+{% extends "posts/base.html" %}
+
+{% block content %}
+<h2>Все посты</h2>
+<ul>
+    {% for post in posts %}
+        <li>
+            <a href="/posts/{{ post.id }}/"><strong>{{ post.title }}</strong></a>:
+            {{ post.content|truncatewords:10 }}
+        </li>
+    {% empty %}
+        <li>Постов пока нет.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -22,7 +22,18 @@ class PostViewTest(TestCase):
         self.assertContains(response, "Тест 1")
         self.assertContains(response, "Тест 2")
 
-    def test_post_is_in_list(self):
+    def test_post_id_view_status(self):
         """Проверка, что пост существует"""
         response = self.client.get('/posts/')
         self.assertTrue(Post.objects.filter(pk=True).exists())
+
+    def test_post_id_view_status(self):
+        """Проверка, что страница /posts/ возвращает статус 200"""
+        response = self.client.get('/posts/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_post_id_view_content(self):
+        """Проверка, что на странице отображаются заголовки постов"""
+        response = self.client.get('/posts/')
+        self.assertContains(response, "Тест 1")
+        self.assertContains(response, "Тест 2")
