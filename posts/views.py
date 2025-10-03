@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post
 
 def home_view(request):
-    return render(request, 'posts/base.html')
+    return render(request, 'posts/home.html')
 
 def post_list_view(request):
     posts = Post.objects.all()
